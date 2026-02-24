@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HUBPAC OS</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- OS Desktop Wrapper -->
+    <div id="desktop">
+      <!-- Background Wallpaper -->
+      <div class="wallpaper"></div>
+
+      <!-- Top Bar (Status) -->
+      <div
+        class="top-bar d-flex justify-content-between align-items-center px-3"
+      >
+        <div class="left-menu d-flex align-items-center gap-3">
+          <i class="fa-brands fa-apple"></i>
+          <!-- OS Logo -->
+          <span class="fw-bold">HUBPAC</span>
+        </div>
+        <div class="right-menu d-flex align-items-center gap-3">
+          <div class="status-icons d-flex gap-2">
+            <i class="fa-solid fa-wifi"></i>
+            <i class="fa-solid fa-battery-full"></i>
+          </div>
+          <div id="clock" class="fw-bold">00:00</div>
+        </div>
+      </div>
+
+      <!-- Desktop Icons Area -->
+      <div class="desktop-icons p-4 d-flex flex-column gap-4">
+        <div class="desktop-icon text-center" onclick="openWindow('projects')">
+          <div class="icon-bg bg-primary text-white mb-1">
+            <i class="fa-solid fa-folder-open"></i>
+          </div>
+          <span class="icon-label text-white text-shadow">Proyectos</span>
+        </div>
+        <div class="desktop-icon text-center" onclick="openWindow('about')">
+          <div class="icon-bg bg-info text-white mb-1">
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <span class="icon-label text-white text-shadow">Sobre Mí</span>
+        </div>
+
+      </div>
+
+      <!-- Windows Container -->
+      <div id="windows-container">
+        <!-- Window: Proyectos -->
+        <div
+          id="window-projects"
+          class="os-window draggable"
+          style="display: none; top: 10%; left: 10%"
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('projects')"
+              ></div>
+              <div class="control-btn min-btn" onclick="minimizeWindow('projects')"></div>
+              <div class="control-btn max-btn" onclick="toggleMaximize('projects')"></div>
+            </div>
+            <div class="window-title fw-bold">Proyectos</div>
+            <div style="width: 50px"></div>
+            <!-- Spacer -->
+          </div>
+          <div class="window-body p-4">
+            <h2 class="mb-4">Mis Proyectos</h2>
+            <div class="row g-4">
+              <!-- Project Card: CasinoBot -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card project-card h-100 border-0 bg-transparent">
+                  <div class="card-body glass-panel p-3 text-white">
+                    <div class="project-icon mb-3 text-warning">
+                      <i class="fa-solid fa-dice"></i>
+                    </div>
+                    <h5 class="card-title">CasinoBot</h5>
+                    <p class="card-text small text-white-50">
+                      Un bot de casino avanzado para Discord.
+                    </p>
+                    <a
+                      href="https://casinobot.hubpac.xyz"
+                      target="_blank"
+                      class="btn btn-sm btn-light rounded-pill px-3"
+                      >Visitar</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Card: Restaurante -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card project-card h-100 border-0 bg-transparent">
+                  <div class="card-body glass-panel p-3 text-white">
+                    <div class="project-icon mb-3 text-danger">
+                      <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h5 class="card-title">Restaurante Online</h5>
+                    <p class="card-text small text-white-50">
+                      Plataforma para creación y gestión de restaurantes propios.
+                    </p>
+                    <a
+                      href="https://restaurante.hubpac.xyz"
+                      target="_blank"
+                      class="btn btn-sm btn-light rounded-pill px-3"
+                      >Visitar</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Project Card: Whatsapp -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card project-card h-100 border-0 bg-transparent">
+                  <div class="card-body glass-panel p-3 text-white">
+                    <div class="project-icon mb-3 text-success">
+                      <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h5 class="card-title">WhatsApp Bot</h5>
+                    <p class="card-text small text-white-50">
+                      Bot de WhatsApp, entretenimiento y descargas.
+                    </p>
+                    <a
+                      href="https://whatsapp.hubpac.xyz"
+                      target="_blank"
+                      class="btn btn-sm btn-light rounded-pill px-3"
+                      >Visitar</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Card: Minecraft -->
+              <div class="col-md-6 col-lg-4">
+                <div class="card project-card h-100 border-0 bg-transparent">
+                  <div class="card-body glass-panel p-3 text-white">
+                    <div class="project-icon mb-3">
+                      <img src="https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/minecraft-creeper-face.png" alt="Minecraft" style="width: 32px; height: 32px; filter: drop-shadow(0 0 5px rgba(40, 167, 69, 0.5));">
+                    </div>
+                    <h5 class="card-title">Minecraft Server</h5>
+                    <p class="card-text small text-white-50">
+                      Servidor de Minecraft, supervivencia y minijuegos.
+                    </p>
+                    <a
+                      href="auth.hubpac.xyz"
+                      target="_blank"
+                      class="btn btn-sm btn-light rounded-pill px-3"
+                      >Visitar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Lenguajes -->
+        <div
+          id="window-languages"
+          class="os-window draggable"
+          style="display: none; top: 15%; left: 15%"
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('languages')"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('languages')"
+              ></div>
+              <div class="control-btn max-btn" onclick="toggleMaximize('languages')"></div>
+            </div>
+            <div class="window-title fw-bold">Lenguajes</div>
+            <div style="width: 50px"></div>
+          </div>
+                <div class="window-body p-4 text-white">
+                    <h3 class="mb-4 text-center">Lenguajes que utilizo</h3>
+                    
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="row g-3">
+                                <!-- Node.js -->
+                                <div class="col-md-6">
+                                    <div class="p-3 glass-panel d-flex align-items-center gap-3">
+                                        <i class="fa-brands fa-node fa-2x text-success"></i>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-1"><span class="fw-bold">Node.js</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Java -->
+                                <div class="col-md-6">
+                                    <div class="p-3 glass-panel d-flex align-items-center gap-3">
+                                        <i class="fa-brands fa-java fa-2x text-danger"></i>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-1"><span class="fw-bold">Java</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- HTML/CSS -->
+                                <div class="col-md-6">
+                                    <div class="p-3 glass-panel d-flex align-items-center gap-3">
+                                        <div class="d-flex"><i class="fa-brands fa-html5 fa-2x text-warning me-1"></i><i class="fa-brands fa-css3-alt fa-2x text-primary"></i></div>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-1"><span class="fw-bold">HTML & CSS</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- MySQL -->
+                                <div class="col-md-6">
+                                    <div class="p-3 glass-panel d-flex align-items-center gap-3">
+                                        <i class="fa-solid fa-database fa-2x text-info"></i>
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-1"><span class="fw-bold">MySQL</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Firebird -->
+                                <div class="col-md-6">
+                                    <div class="p-3 glass-panel d-flex align-items-center gap-3">
+                                        <i class="fa-solid fa-fire fa-2x text-warning"></i> <!-- Icono generico para Firebird -->
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between mb-1"><span class="fw-bold">Firebird SQL</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+          </div>
+        </div>
+
+            <!-- Window: About -->
+            <div id="window-about" class="os-window draggable" style="display: none; top: 20%; left: 20%; width: 550px;">
+                <div class="window-header d-flex justify-content-between align-items-center px-3 py-2">
+                    <div class="window-controls d-flex gap-2">
+                        <div class="control-btn close-btn" onclick="closeWindow('about')"></div>
+                        <div class="control-btn min-btn" onclick="minimizeWindow('about')"></div>
+                        <div class="control-btn max-btn" onclick="toggleMaximize('about')"></div>
+                    </div>
+                    <div class="window-title fw-bold">Sobre Mí</div>
+                     <div style="width: 50px;"></div>
+                </div>
+                <div class="window-body p-4 text-white">
+                    <div class="text-center mb-4">
+                        <div class="avatar mb-3">
+                            <img src="img/perfil.jpg" alt="Avatar" class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
+                        </div>
+                        <h3>Pablo</h3>
+                        <p class="text-white-50">Full Stack Developer</p>
+                        <hr class="border-white-50 mx-auto" style="width: 50%;">
+                    </div>
+                    
+
+                    <h5 class="mb-3"><i class="fa-solid fa-graduation-cap me-2 text-info"></i>Educación | Aprendizaje</h5>
+                    <p class="small text-white-50">
+                        Autodidacta apasionado con aprendizaje continuo en nuevas tecnologías web, programas automatizados y desarrollo de bots.
+                    </p>
+                    <p class="small text-white-50 mt-3">
+                        <i class="fa-solid fa-lightbulb me-2 text-warning"></i>
+                        Para hablar de un nuevo servicio, puedes enviar una petición desde el botón de contacto.
+                    </p>
+                </div>
+            </div>
+
+        <!-- Window: Services -->
+        <div
+          id="window-services"
+          class="os-window draggable"
+          style="display: none; top: 12%; left: 30%"
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('services')"
+              ></div>
+              <div class="control-btn min-btn" onclick="minimizeWindow('services')"></div>
+              <div class="control-btn max-btn" onclick="toggleMaximize('services')"></div>
+            </div>
+            <div class="window-title fw-bold">Servicios</div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <h3 class="mb-4 text-center">Mis Servicios</h3>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="service-card glass-panel p-3 h-100 text-center">
+                  <i class="fa-brands fa-discord fa-2x mb-3 text-primary"></i>
+                  <h5>Discord Bots</h5>
+                  <p class="small text-white-50">
+                    Bots personalizados con integración de APIs, economía y
+                    moderación.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-card glass-panel p-3 h-100 text-center">
+                  <i class="fa-solid fa-code fa-2x mb-3 text-success"></i>
+                  <h5>Desarrollo Web</h5>
+                  <p class="small text-white-50">
+                    Sitios web modernos, responsivos y optimizados como este.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-card glass-panel p-3 h-100 text-center">
+                  <i class="fa-solid fa-server fa-2x mb-3 text-warning"></i>
+                  <h5>Backend & APIs</h5>
+                  <p class="small text-white-50">
+                    REST APIs robustas y escalables con Node.js y Express.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="service-card glass-panel p-3 h-100 text-center">
+                  <i class="fa-solid fa-robot fa-2x mb-3 text-info"></i>
+                  <h5>Automatización</h5>
+                  <p class="small text-white-50">
+                    Scripts para automatizar tareas repetitivas y mejorar la
+                    productividad.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="small text-white-50">
+                    <i class="fa-solid fa-circle-info me-1"></i>
+                    ¿Buscas algo diferente? Puedes solicitar un nuevo servicio desde el formulario de contacto.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Contact -->
+        <div
+          id="window-contact"
+          class="os-window draggable"
+          style="display: none; top: 18%; left: 35%; width: 500px"
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('contact')"
+              ></div>
+              <div class="control-btn min-btn" onclick="minimizeWindow('contact')"></div>
+              <div class="control-btn max-btn" onclick="toggleMaximize('contact')"></div>
+            </div>
+            <div class="window-title fw-bold">Contacto</div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <h3 class="mb-3 text-center">Contáctame</h3>
+            <form action="https://formspree.io/f/xykdeqer" method="POST">
+              <div class="mb-3">
+                <label class="form-label small">Nombre</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control glass-input"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control glass-input"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Mensaje</label>
+                <textarea
+                  name="message"
+                  class="form-control glass-input"
+                  rows="3"
+                  placeholder="¿En qué puedo ayudarte?"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 rounded-pill">
+                Enviar Mensaje
+              </button>
+            </form>
+            <div class="mt-4 text-center d-flex justify-content-center gap-4">
+              <a href="https://github.com/PARJOAC" class="text-white hover-scale"
+                ><i class="fa-brands fa-github fa-lg"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/pablo-arjonilla-cuadrado-31252927a/" class="text-white hover-scale"
+                ><i class="fa-brands fa-linkedin fa-lg"></i
+              ></a>
+              <a href="https://www.instagram.com/paabloarj_/" class="text-white hover-scale"
+                ><i class="fa-brands fa-instagram fa-lg"></i
+              ></a>
+              <a href="https://discord.com/users/714376484139040809" class="text-white hover-scale"
+                ><i class="fa-brands fa-discord fa-lg"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+            <!-- Window: Settings -->
+            <div id="window-settings" class="os-window draggable" style="display: none; top: 15%; left: 25%; width: 450px;">
+                <div class="window-header d-flex justify-content-between align-items-center px-3 py-2">
+                    <div class="window-controls d-flex gap-2">
+                        <div class="control-btn close-btn" onclick="closeWindow('settings')"></div>
+                        <div class="control-btn min-btn" onclick="minimizeWindow('settings')"></div>
+                        <div class="control-btn max-btn" onclick="toggleMaximize('settings')"></div>
+                    </div>
+                    <div class="window-title fw-bold">Configuración</div>
+                     <div style="width: 50px;"></div>
+                </div>
+                <div class="window-body p-4 text-white">
+                    <h4 class="mb-4">Personalización</h4>
+                    
+                    <div class="mb-4">
+                        <label class="form-label d-block mb-2">Fondo de Pantalla</label>
+                        <div class="d-flex gap-2">
+                            <div class="ratio ratio-16x9 rounded border border-2 border-primary" onclick="setWallpaper('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200') center/cover; cursor: pointer;"></div>
+                            <div class="ratio ratio-16x9 rounded border border-white-50" onclick="setWallpaper('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=200') center/cover; cursor: pointer;"></div>
+                            <div class="ratio ratio-16x9 rounded border border-white-50" onclick="setWallpaper('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=200') center/cover; cursor: pointer;"></div>
+                        </div>
+                        <div class="d-flex gap-2 mt-2">
+                             <!-- Nature -->
+                            <div class="ratio ratio-16x9 rounded border border-white-50" onclick="setWallpaper('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=200') center/cover; cursor: pointer;"></div>
+                             <!-- Gradient -->
+                            <div class="ratio ratio-16x9 rounded border border-white-50" onclick="setWallpaper('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=200') center/cover; cursor: pointer;"></div>
+                             <!-- Cyberpunk -->
+                            <div class="ratio ratio-16x9 rounded border border-white-50" onclick="setWallpaper('https://images.unsplash.com/photo-1535868463750-c78d9543614f?q=80&w=2564')" style="width: 100px; background: url('https://images.unsplash.com/photo-1535868463750-c78d9543614f?q=80&w=200') center/cover; cursor: pointer;"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+      <!-- Dock / Taskbar -->
+      <div
+        class="dock-container fixed-bottom pb-3 d-flex justify-content-center"
+      >
+        <div class="dock glass-panel d-flex gap-3 px-4 py-2 rounded-4">
+          <div
+            class="dock-item"
+            onclick="openWindow('projects')"
+            title="Proyectos"
+          >
+            <i class="fa-solid fa-rocket text-primary"></i>
+          </div>
+          <div
+            class="dock-item"
+            onclick="openWindow('languages')"
+            title="Lenguajes"
+          >
+            <i class="fa-solid fa-code text-warning"></i>
+          </div>
+          <div
+            class="dock-item"
+            onclick="openWindow('services')"
+            title="Servicios"
+          >
+            <i class="fa-solid fa-briefcase text-success"></i>
+          </div>
+          <div class="dock-item" onclick="openWindow('about')" title="Sobre Mí">
+            <i class="fa-solid fa-user text-info"></i>
+          </div>
+          <div
+            class="dock-item"
+            onclick="openWindow('contact')"
+            title="Contacto"
+          >
+            <i class="fa-solid fa-envelope text-danger"></i>
+          </div>
+          <div
+            class="dock-separator bg-white opacity-25"
+            style="width: 1px"
+          ></div>
+          <div class="dock-item" onclick="openWindow('settings')" title="Configuración">
+            <i class="fa-solid fa-gear text-secondary"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
