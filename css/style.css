@@ -67,11 +67,10 @@ html {
   width: 80px;
   cursor: pointer;
   pointer-events: auto;
-  transition: transform 0.2s;
 }
 
-.desktop-icon:hover {
-  transform: scale(1.05);
+.desktop-icon:hover .icon-bg {
+  transform: scale(1.1);
 }
 
 .desktop-icon .icon-bg {
@@ -84,6 +83,7 @@ html {
   justify-content: center;
   font-size: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
 }
 
 .desktop-icon .icon-label {
