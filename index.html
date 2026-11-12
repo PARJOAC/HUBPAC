@@ -1,0 +1,1957 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HUBPAC</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- OS Desktop Wrapper -->
+    <div id="desktop" class="w-100 h-100">
+      <!-- Top Bar (macOS Style) -->
+      <div
+        class="top-bar d-flex justify-content-between align-items-center px-3 position-absolute top-0 w-100"
+        style="z-index: 1000"
+      >
+        <div class="d-flex align-items-center gap-2">
+          <div
+            class="top-bar-item fw-bold text-white d-flex align-items-center gap-2"
+          >
+            <i class="fa-solid fa-cube text-primary"></i>
+            <span>HUBPAC</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <div
+            id="clock"
+            class="fw-semibold text-white px-2 py-1 rounded bg-white-10"
+          >
+            --:--
+          </div>
+        </div>
+      </div>
+
+      <!-- Background Wallpaper -->
+      <div class="wallpaper"></div>
+
+      <!-- Desktop Icons Area -->
+      <div class="desktop-icons p-3 d-flex flex-column gap-3">
+        <div
+          class="desktop-icon"
+          onclick="openWindow('projects')"
+          title="Explorar Proyectos"
+        >
+          <div
+            class="icon-bg"
+            style="
+              background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+              color: white;
+            "
+          >
+            <i class="fa-solid fa-folder-open"></i>
+          </div>
+          <span class="icon-label">Proyectos</span>
+        </div>
+        <div
+          class="desktop-icon"
+          onclick="openWindow('languages')"
+          title="Ver Tecnologías"
+        >
+          <div
+            class="icon-bg"
+            style="
+              background: linear-gradient(135deg, #f59e0b, #d97706);
+              color: white;
+            "
+          >
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <span class="icon-label">Lenguajes</span>
+        </div>
+        <div
+          class="desktop-icon"
+          onclick="openWindow('services')"
+          title="Servicios"
+        >
+          <div
+            class="icon-bg"
+            style="
+              background: linear-gradient(135deg, #10b981, #047857);
+              color: white;
+            "
+          >
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <span class="icon-label">Servicios</span>
+        </div>
+        <div
+          class="desktop-icon"
+          onclick="openWindow('about')"
+          title="Sobre Mí"
+        >
+          <div
+            class="icon-bg"
+            style="
+              background: linear-gradient(135deg, #06b6d4, #0284c7);
+              color: white;
+            "
+          >
+            <i class="fa-solid fa-user"></i>
+          </div>
+          <span class="icon-label">Sobre Mí</span>
+        </div>
+        <div
+          class="desktop-icon"
+          onclick="openWindow('contact')"
+          title="Contáctame"
+        >
+          <div
+            class="icon-bg"
+            style="
+              background: linear-gradient(135deg, #ef4444, #b91c1c);
+              color: white;
+            "
+          >
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <span class="icon-label">Contacto</span>
+        </div>
+      </div>
+
+      <!-- Windows Container -->
+      <div id="windows-container">
+        <!-- Window: Proyectos -->
+        <div
+          id="window-projects"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 8%;
+            left: 8%;
+            width: 880px;
+            max-width: 95vw;
+            height: 580px;
+            max-height: 88vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('projects')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('projects')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('projects')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-folder-open me-2 text-primary"></i>Proyectos
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4">
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom border-white-10"
+            >
+              <div>
+                <h3
+                  class="fw-bold mb-1 text-white d-flex align-items-center gap-2"
+                >
+                  Mis Proyectos
+                </h3>
+                <p class="text-white-50 mb-0 small">
+                  Aplicaciones web, bots para comunidades y servidores de
+                  videojuegos.
+                </p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Project Card: Omni -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="omni"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="project-icon-box project-icon-omni">
+                        <img
+                          src="img/omni.png"
+                          alt="Omni Bot"
+                          class="project-img"
+                          onerror="this.src = 'img/logo-casino.png'"
+                        />
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Omni</h5>
+                        <span class="project-role text-primary-light"
+                          >Bot Multifuncional Discord</span
+                        >
+                      </div>
+                    </div>
+                    <span class="status-badge status-online">
+                      <span class="status-dot"></span> Online
+                    </span>
+                  </div>
+
+                  <p class="project-desc small flex-grow-1 mb-3">
+                    Bot integral para servidores de Discord con sistema de
+                    economía, moderación, minijuegos interactivos y panel de
+                    gestión.
+                  </p>
+
+                  <div class="project-tags d-flex flex-wrap gap-2 mb-3">
+                    <span class="tech-tag"
+                      ><i class="fa-brands fa-discord me-1"></i>Discord.js</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-brands fa-node-js me-1"></i>Node.js</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-robot me-1"></i>Bot</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-server me-1"></i>REST API</span
+                    >
+                  </div>
+
+                  <div
+                    class="project-footer pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50"
+                      ><i class="fa-solid fa-globe me-1"></i>hubpac.xyz</span
+                    >
+                    <a
+                      href="https://hubpac.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-project-action"
+                    >
+                      Visitar
+                      <i
+                        class="fa-solid fa-arrow-up-right-from-square ms-1"
+                      ></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Card: Tienda Online -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="tiendas"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="project-icon-box project-icon-tiendas">
+                        <img
+                          src="img/tienda.png"
+                          alt="Tienda Online"
+                          class="project-img"
+                        />
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Tienda Online</h5>
+                        <span class="project-role text-purple-light"
+                          >Plataforma E-Commerce SaaS</span
+                        >
+                      </div>
+                    </div>
+                    <span class="status-badge status-online">
+                      <span class="status-dot"></span> Online
+                    </span>
+                  </div>
+
+                  <p class="project-desc small flex-grow-1 mb-3">
+                    Plataforma web para la creación, configuración y
+                    administración personalizada de tiendas online con catálogo
+                    dinámico y pedidos.
+                  </p>
+
+                  <div class="project-tags d-flex flex-wrap gap-2 mb-3">
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-cart-shopping me-1"></i
+                      >E-Commerce</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-brands fa-js me-1"></i>Full-Stack</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-database me-1"></i>MySQL</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-layer-group me-1"></i>SaaS</span
+                    >
+                  </div>
+
+                  <div
+                    class="project-footer pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50"
+                      ><i class="fa-solid fa-globe me-1"></i
+                      >tiendas.hubpac.xyz</span
+                    >
+                    <a
+                      href="https://tiendas.hubpac.xyz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-project-action"
+                    >
+                      Visitar
+                      <i
+                        class="fa-solid fa-arrow-up-right-from-square ms-1"
+                      ></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Card: VenixMC -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="venix"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="project-icon-box project-icon-venix">
+                        <img
+                          src="img/venix.png"
+                          alt="VenixMC"
+                          class="project-img"
+                        />
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">VenixMC</h5>
+                        <span class="project-role text-danger-light"
+                          >Network Minecraft</span
+                        >
+                      </div>
+                    </div>
+                    <span class="status-badge status-online">
+                      <span class="status-dot"></span> Activo
+                    </span>
+                  </div>
+
+                  <p class="project-desc small flex-grow-1 mb-3">
+                    Comunidad y red de servidores de Minecraft con múltiples
+                    modalidades, sistema de rangos y portal web con tienda
+                    integrada.
+                  </p>
+
+                  <div class="project-tags d-flex flex-wrap gap-2 mb-3">
+                    <span class="tech-tag"
+                      ><i class="fa-brands fa-java me-1"></i>Java</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-cubes me-1"></i>Minecraft</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-network-wired me-1"></i
+                      >Network</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-users me-1"></i>Comunidad</span
+                    >
+                  </div>
+
+                  <div
+                    class="project-footer pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50"
+                      ><i class="fa-solid fa-globe me-1"></i>venixmc.net</span
+                    >
+                    <a
+                      href="https://www.venixmc.net/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-project-action"
+                    >
+                      Visitar
+                      <i
+                        class="fa-solid fa-arrow-up-right-from-square ms-1"
+                      ></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Card: Minecraft TechNest -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="technest"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="project-icon-box project-icon-technest">
+                        <img
+                          src="img/minecraft.avif"
+                          alt="TechNest Survival"
+                          class="project-img"
+                        />
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">TechNest</h5>
+                        <span class="project-role text-success-light"
+                          >Servidor Survival 1.21.11</span
+                        >
+                      </div>
+                    </div>
+                    <span class="status-badge status-online">
+                      <span class="status-dot"></span> v1.21.11
+                    </span>
+                  </div>
+
+                  <p class="project-desc small flex-grow-1 mb-3">
+                    Servidor survival técnico comunitario de alto rendimiento,
+                    optimizado para la versión 1.21.11 con economía y soporte
+                    activo.
+                  </p>
+
+                  <div class="project-tags d-flex flex-wrap gap-2 mb-3">
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-cube me-1"></i>PaperMC</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-brands fa-java me-1"></i>Java 21</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-shield-halved me-1"></i
+                      >Survival</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-signal me-1"></i
+                      >mc.hubpac.xyz</span
+                    >
+                  </div>
+
+                  <div
+                    class="project-footer pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <code class="server-ip-badge">mc.hubpac.xyz</code>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-project-action"
+                      onclick="copyIp('mc.hubpac.xyz', this)"
+                      title="Copiar IP al portapapeles"
+                    >
+                      <i class="fa-regular fa-copy me-1"></i> Copiar IP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Lenguajes -->
+        <div
+          id="window-languages"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 12%;
+            left: 16%;
+            width: 720px;
+            max-width: 95vw;
+            height: 560px;
+            max-height: 88vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('languages')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('languages')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('languages')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-code me-2 text-warning"></i>Lenguajes &
+              Tecnologías
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom border-white-10"
+            >
+              <div>
+                <h3
+                  class="fw-bold mb-1 text-white d-flex align-items-center gap-2"
+                >
+                  Stack Tecnológico
+                </h3>
+                <p class="text-white-50 mb-0 small">
+                  Lenguajes, runtimes y herramientas que utilizo en mis
+                  desarrollos.
+                </p>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <!-- TypeScript -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(49, 120, 198, 0.15);
+                      border-color: rgba(49, 120, 198, 0.3);
+                    "
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="24" height="24" rx="4" fill="#3178C6" />
+                      <path
+                        d="M11.75 8.5H6.25V10.25H8.05V17.5H10V10.25H11.75V8.5Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M17.5 10.95C17.05 10.5 16.35 10.15 15.35 10.15C13.8 10.15 12.95 11 12.95 12.1C12.95 13.1 13.6 13.7 14.85 14.25L15.4 14.5C16.2 14.85 16.5 15.2 16.5 15.75C16.5 16.45 15.9 16.9 15 16.9C14 16.9 13.2 16.35 12.7 15.8L11.5 17.05C12.3 18.05 13.5 18.55 14.95 18.55C16.7 18.55 18.4 17.5 18.4 15.7C18.4 14.5 17.65 13.85 16.4 13.3L15.85 13.05C15.2 12.75 14.8 12.5 14.8 12C14.8 11.45 15.25 11.15 15.85 11.15C16.45 11.15 16.9 11.4 17.25 11.75L17.5 10.95Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">TypeScript</span>
+                    <span class="small text-white-50"
+                      >Tipado Estático & JS Moderno</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vite -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(189, 52, 254, 0.15);
+                      border-color: rgba(189, 52, 254, 0.3);
+                    "
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.7 3.5L12.5 21.3C12.3 21.7 11.7 21.7 11.5 21.3L2.3 3.5C2.1 3 2.5 2.5 3 2.6L12 4.2L21 2.6C21.5 2.5 21.9 3 21.7 3.5Z"
+                        fill="url(#viteGrad)"
+                      />
+                      <path
+                        d="M14.8 2.2L7.3 13.5H11.5L9.5 20.8L17.5 8.8H13L14.8 2.2Z"
+                        fill="url(#viteBoltGrad)"
+                      />
+                      <defs>
+                        <linearGradient
+                          id="viteGrad"
+                          x1="2"
+                          y1="2"
+                          x2="22"
+                          y2="22"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#41D1FF" />
+                          <stop offset="1" stop-color="#BD34FE" />
+                        </linearGradient>
+                        <linearGradient
+                          id="viteBoltGrad"
+                          x1="7"
+                          y1="2"
+                          x2="17"
+                          y2="21"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stop-color="#FFEA83" />
+                          <stop offset="1" stop-color="#FFDD35" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">Vite</span>
+                    <span class="small text-white-50">Frontend & Bundler</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Node.js -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(34, 197, 94, 0.15);
+                      border-color: rgba(34, 197, 94, 0.3);
+                    "
+                  >
+                    <i class="fa-brands fa-node-js fa-2x text-success"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">Node.js</span>
+                    <span class="small text-white-50">Backend & APIs</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Java -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(239, 68, 68, 0.15);
+                      border-color: rgba(239, 68, 68, 0.3);
+                    "
+                  >
+                    <i class="fa-brands fa-java fa-2x text-danger"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">Java</span>
+                    <span class="small text-white-50"
+                      >Backend & Servidores Core</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- HTML/CSS -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(234, 179, 8, 0.15);
+                      border-color: rgba(234, 179, 8, 0.3);
+                    "
+                  >
+                    <div class="d-flex">
+                      <i class="fa-brands fa-html5 fa-lg text-warning me-1"></i>
+                      <i class="fa-brands fa-css3-alt fa-lg text-primary"></i>
+                    </div>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">HTML5 & CSS3</span>
+                    <span class="small text-white-50"
+                      >Estructura & Diseño Responsive</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- MySQL -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(14, 165, 233, 0.15);
+                      border-color: rgba(14, 165, 233, 0.3);
+                    "
+                  >
+                    <i class="fa-solid fa-database fa-lg text-info"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">MySQL</span>
+                    <span class="small text-white-50"
+                      >Base de Datos Relacional</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Firebird -->
+              <div class="col-md-6">
+                <div
+                  class="p-3 glass-panel skill-card d-flex align-items-center gap-3"
+                >
+                  <div
+                    class="skill-icon-wrap"
+                    style="
+                      background: rgba(249, 115, 22, 0.15);
+                      border-color: rgba(249, 115, 22, 0.3);
+                    "
+                  >
+                    <i class="fa-solid fa-fire fa-lg text-warning"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <span class="fw-bold d-block text-white">Firebird SQL</span>
+                    <span class="small text-white-50"
+                      >Base de Datos Relacional</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: About -->
+        <div
+          id="window-about"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 6%;
+            left: 12%;
+            width: 820px;
+            max-width: 95vw;
+            height: 90vh;
+            max-height: 90vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('about')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('about')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('about')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-user me-2 text-info"></i>Sobre Mí
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <!-- Profile Hero Card -->
+            <div
+              class="glass-panel p-4 rounded-4 mb-4 d-flex flex-column flex-sm-row align-items-center gap-4"
+            >
+              <div class="avatar-glow-ring flex-shrink-0">
+                <img
+                  src="img/perfil.jpg"
+                  alt="Pablo"
+                  onerror="this.src = 'img/logo-casino.png'"
+                />
+              </div>
+              <div class="flex-grow-1">
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
+                  <h3 class="fw-bold mb-0 text-white">Pablo Arjonilla</h3>
+                  <span class="status-badge status-online">
+                    <span class="status-dot"></span> Disponible
+                  </span>
+                </div>
+                <span class="text-primary-light fw-medium d-block mb-2"
+                  >Full Stack Developer · Redes & Sistemas</span
+                >
+                <p class="small text-white-50 mb-3">
+                  Desarrollador autodidacta con titulación en informática y
+                  redes. Especializado en bots, plataformas web SaaS,
+                  administración de servidores y soluciones de alta
+                  concurrencia.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-project-action"
+                    onclick="openWindow('contact')"
+                  >
+                    <i class="fa-solid fa-paper-plane me-1"></i> Contactar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-project-action"
+                    onclick="openWindow('projects')"
+                  >
+                    <i class="fa-solid fa-folder-open me-1"></i> Ver Proyectos
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="row g-3 mb-4">
+              <div class="col-3">
+                <div class="about-stat-card">
+                  <div class="fw-bold fs-5 text-primary">+6</div>
+                  <div class="small text-white-50">Años Programando</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="about-stat-card">
+                  <div class="fw-bold fs-5 text-warning">+5</div>
+                  <div class="small text-white-50">Proyectos y Bots</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="about-stat-card">
+                  <div class="fw-bold fs-5 text-success">2024</div>
+                  <div class="small text-white-50">Titulación FP</div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="about-stat-card">
+                  <div class="fw-bold fs-5 text-info">100%</div>
+                  <div class="small text-white-50">Dedicación</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Left column: Formación + Habilidades -->
+              <div class="col-md-6 d-flex flex-column gap-4">
+                <!-- Formación Académica -->
+                <div class="p-3 glass-panel rounded-3">
+                  <h6
+                    class="fw-bold mb-3 d-flex align-items-center gap-2 text-info"
+                  >
+                    <i class="fa-solid fa-graduation-cap"></i> Formación
+                    Académica
+                  </h6>
+                  <div class="d-flex flex-column gap-3">
+                    <div>
+                      <div class="d-flex align-items-start gap-2">
+                        <i
+                          class="fa-solid fa-circle-dot text-primary mt-1 small flex-shrink-0"
+                        ></i>
+                        <div>
+                          <div class="fw-semibold small text-white">
+                            CFGS – Desarrollo de Aplicaciones Web
+                          </div>
+                          <div class="small text-white-50">
+                            IES Pedro Espinosa
+                          </div>
+                          <span
+                            class="badge mt-1"
+                            style="
+                              background: rgba(59, 130, 246, 0.2);
+                              color: #93c5fd;
+                              border: 1px solid rgba(59, 130, 246, 0.35);
+                              font-size: 0.68rem;
+                            "
+                          >
+                            <i
+                              class="fa-solid fa-spinner fa-spin me-1"
+                              style="font-size: 0.6rem"
+                            ></i
+                            >Estudiando Actualmente
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="d-flex align-items-start gap-2">
+                        <i
+                          class="fa-solid fa-circle-dot text-success mt-1 small flex-shrink-0"
+                        ></i>
+                        <div>
+                          <div class="fw-semibold small text-white">
+                            CFGM – Sistema Microinformático y Redes
+                          </div>
+                          <div class="small text-white-50">
+                            IES Pedro Espinosa
+                          </div>
+                          <span
+                            class="badge mt-1"
+                            style="
+                              background: rgba(34, 197, 94, 0.15);
+                              color: #4ade80;
+                              border: 1px solid rgba(34, 197, 94, 0.3);
+                              font-size: 0.68rem;
+                            "
+                          >
+                            <i class="fa-solid fa-check me-1"></i>Titulación
+                            2024
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Habilidades -->
+                <div class="p-3 glass-panel rounded-3">
+                  <h6
+                    class="fw-bold mb-3 d-flex align-items-center gap-2 text-warning"
+                  >
+                    <i class="fa-solid fa-star"></i> Habilidades
+                  </h6>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-lightbulb me-1 text-warning"></i
+                      >Autodidacta</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-puzzle-piece me-1 text-primary"></i
+                      >Resolutivo</span
+                    >
+                    <span class="tech-tag"
+                      ><i
+                        class="fa-solid fa-arrows-rotate me-1 text-success"
+                      ></i
+                      >Adaptable</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-users me-1 text-info"></i>Trabajo
+                      en equipo</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-bolt me-1 text-warning"></i
+                      >Proactivo</span
+                    >
+                    <span class="tech-tag"
+                      ><i class="fa-solid fa-eye me-1 text-purple-light"></i
+                      >Atención al detalle</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right column: Tecnologías + Redes -->
+              <div class="col-md-6 d-flex flex-column gap-4">
+                <!-- Tecnologías -->
+                <div class="p-3 glass-panel rounded-3">
+                  <h6
+                    class="fw-bold mb-3 d-flex align-items-center gap-2 text-success"
+                  >
+                    <i class="fa-solid fa-microchip"></i> Tecnologías
+                  </h6>
+                  <div class="d-flex flex-column gap-2">
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-code text-primary mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Lenguajes:</span
+                        >
+                        <span class="small text-white-50">
+                          Java, JavaScript, TypeScript, PHP</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-server text-warning mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Backend:</span
+                        >
+                        <span class="small text-white-50">
+                          Node.js, Express, despliegue y gestión de
+                          servidores</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-database text-info mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Bases de Datos:</span
+                        >
+                        <span class="small text-white-50">
+                          MySQL, Firebird SQL</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-brands fa-linux text-success mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Sistemas:</span
+                        >
+                        <span class="small text-white-50">
+                          Ubuntu Server, administración de servidores
+                          Linux</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-bolt text-purple-light mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Herramientas:</span
+                        >
+                        <span class="small text-white-50">
+                          Vite, Git, PaperMC, Discord.js</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Redes & Informática -->
+                <div class="p-3 glass-panel rounded-3">
+                  <h6
+                    class="fw-bold mb-3 d-flex align-items-center gap-2 text-danger-light"
+                  >
+                    <i class="fa-solid fa-network-wired"></i> Redes &
+                    Informática
+                  </h6>
+                  <div class="d-flex flex-column gap-2">
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-route text-warning mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white">Redes:</span>
+                        <span class="small text-white-50">
+                          TCP/IP, DNS, DHCP, VLANs, switching y routing
+                          básico</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-shield-halved text-success mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Seguridad:</span
+                        >
+                        <span class="small text-white-50">
+                          Firewalls, configuración de accesos y seguridad en
+                          servidores</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-desktop text-info mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Microinformática:</span
+                        >
+                        <span class="small text-white-50">
+                          Montaje, mantenimiento de equipos y resolución de
+                          incidencias</span
+                        >
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                      <i
+                        class="fa-solid fa-cloud text-primary mt-1 small flex-shrink-0"
+                      ></i>
+                      <div>
+                        <span class="small fw-semibold text-white"
+                          >Cloud & Hosting:</span
+                        >
+                        <span class="small text-white-50">
+                          Despliegue en VPS, gestión de dominios,
+                          Cloudflare</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Services -->
+        <div
+          id="window-services"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 10%;
+            left: 18%;
+            width: 840px;
+            max-width: 95vw;
+            height: 580px;
+            max-height: 88vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('services')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('services')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('services')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-briefcase me-2 text-success"></i>Servicios
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <div
+              class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-2 border-bottom border-white-10"
+            >
+              <div>
+                <h3
+                  class="fw-bold mb-1 text-white d-flex align-items-center gap-2"
+                >
+                  Mis Servicios
+                  <span
+                    class="badge rounded-pill bg-success bg-opacity-25 text-success border border-success border-opacity-25 fs-6 fw-normal px-3 py-1"
+                  >
+                    Soluciones a Medida
+                  </span>
+                </h3>
+                <p class="text-white-50 mb-0 small">
+                  Desarrollo profesional adaptado a las necesidades de tu
+                  comunidad o proyecto.
+                </p>
+              </div>
+            </div>
+
+            <div class="row g-4">
+              <!-- Service 1: Discord Bots -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="omni"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="service-icon-box project-icon-omni">
+                        <i class="fa-brands fa-discord fa-xl text-primary"></i>
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Discord Bots</h5>
+                        <span class="project-role text-primary-light"
+                          >Automatización de Comunidades</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <p class="project-desc small mb-3">
+                    Bots personalizados con comandos slash, economías virtuales,
+                    niveles, moderación inteligente e integraciones externas.
+                  </p>
+                  <ul
+                    class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-3 flex-grow-1"
+                  >
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Comandos interactivos en tiempo real
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Bases de datos persistentes
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Panel web de administración opcional
+                    </li>
+                  </ul>
+                  <div
+                    class="pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50">100% Personalizado</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-project-action"
+                      onclick="openWindow('contact')"
+                    >
+                      Solicitar <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 2: Desarrollo Web -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="technest"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="service-icon-box project-icon-technest">
+                        <i class="fa-solid fa-code fa-xl text-success"></i>
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Desarrollo Web</h5>
+                        <span class="project-role text-success-light"
+                          >Frontend & Aplicaciones Web</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <p class="project-desc small mb-3">
+                    Diseño y desarrollo de sitios web modernos, responsivos,
+                    optimizados para SEO y con experiencias de usuario
+                    intuitivas.
+                  </p>
+                  <ul
+                    class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-3 flex-grow-1"
+                  >
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Diseño adaptado a móviles y tablets
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Arquitecturas rápidas con Vite
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Estética moderna estilo Glassmorphism
+                    </li>
+                  </ul>
+                  <div
+                    class="pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50">Webs & Portfolios</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-project-action"
+                      onclick="openWindow('contact')"
+                    >
+                      Solicitar <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 3: Backend & APIs -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="tiendas"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="service-icon-box project-icon-tiendas">
+                        <i
+                          class="fa-solid fa-server fa-xl text-purple-light"
+                        ></i>
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Backend & APIs</h5>
+                        <span class="project-role text-purple-light"
+                          >Lógica de Servidor & Datos</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <p class="project-desc small mb-3">
+                    Creación de REST APIs robustas, autenticación segura, manejo
+                    de sesiones y conexión eficiente a bases de datos
+                    relacionales.
+                  </p>
+                  <ul
+                    class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-3 flex-grow-1"
+                  >
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Node.js, Express y TypeScript
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Modelado de datos MySQL y Firebird
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Seguridad y validación estricta
+                    </li>
+                  </ul>
+                  <div
+                    class="pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50"
+                      >APIs & Microservicios</span
+                    >
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-project-action"
+                      onclick="openWindow('contact')"
+                    >
+                      Solicitar <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service 4: Automatización & Servidores -->
+              <div class="col-md-6">
+                <div
+                  class="project-card glass-panel h-100 p-4 d-flex flex-column"
+                  data-theme="venix"
+                >
+                  <div
+                    class="d-flex align-items-start justify-content-between mb-3"
+                  >
+                    <div class="d-flex align-items-center gap-3">
+                      <div class="service-icon-box project-icon-venix">
+                        <i
+                          class="fa-solid fa-robot fa-xl text-danger-light"
+                        ></i>
+                      </div>
+                      <div>
+                        <h5 class="fw-bold text-white mb-0">Automatización</h5>
+                        <span class="project-role text-danger-light"
+                          >Optimización & Servidores</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <p class="project-desc small mb-3">
+                    Scripts para automatizar tareas repetitivas, configuración y
+                    afinamiento de servidores Minecraft y monitoreo de
+                    infraestructura.
+                  </p>
+                  <ul
+                    class="list-unstyled small text-white-50 d-flex flex-column gap-2 mb-3 flex-grow-1"
+                  >
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Optimización de rendimiento (PaperMC)
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Scripts de backup y mantenimiento
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-circle-check text-success me-2"></i
+                      >Monitoreo de disponibilidad
+                    </li>
+                  </ul>
+                  <div
+                    class="pt-3 border-top border-white-10 d-flex justify-content-between align-items-center"
+                  >
+                    <span class="small text-white-50"
+                      >Infraestructura & Ops</span
+                    >
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-project-action"
+                      onclick="openWindow('contact')"
+                    >
+                      Solicitar <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-4 p-3 glass-panel rounded-3 text-center d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2"
+            >
+              <span class="small text-white-50">
+                <i class="fa-solid fa-lightbulb text-warning me-2"></i>¿Tienes
+                una idea o requerimiento especial en mente?
+              </span>
+              <button
+                type="button"
+                class="btn btn-sm btn-primary rounded-pill px-3"
+                onclick="openWindow('contact')"
+              >
+                Escríbeme un Mensaje
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Window: Contact -->
+        <div
+          id="window-contact"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 12%;
+            left: 28%;
+            width: 520px;
+            max-width: 95vw;
+            height: 560px;
+            max-height: 88vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('contact')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('contact')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('contact')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-envelope me-2 text-danger"></i>Contacto
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <div class="text-center mb-4 pb-2 border-bottom border-white-10">
+              <h4 class="fw-bold mb-1 text-white">Enviar Mensaje</h4>
+              <p class="text-white-50 small mb-0">
+                Escribe tu consulta o propuesta y me pondré en contacto contigo.
+              </p>
+            </div>
+
+            <div
+              id="contact-alert"
+              class="alert d-none mb-3 py-2 px-3 small rounded-3"
+              role="alert"
+            ></div>
+
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/xykdeqer"
+              method="POST"
+            >
+              <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label small text-white-50 mb-1">
+                    <i class="fa-solid fa-user me-1 text-info"></i> Tu Nombre
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="contact-name"
+                    class="form-control glass-input"
+                    placeholder="Tu nombre"
+                    required
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label small text-white-50 mb-1">
+                    <i class="fa-solid fa-at me-1 text-warning"></i> Tu Correo
+                    Electrónico
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="contact-email"
+                    class="form-control glass-input"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label
+                  class="form-label small text-white-50 mb-1"
+                  for="contact-subject"
+                >
+                  <i class="fa-solid fa-list-check me-1 text-primary"></i>
+                  Asunto o Proyecto
+                </label>
+
+                <div class="input-group">
+                  <!-- Input donde el usuario puede escribir libremente -->
+                  <input
+                    type="text"
+                    name="asunto"
+                    id="contact-subject"
+                    class="form-control glass-input"
+                    style="
+                      background-color: rgba(20, 22, 28, 0.95);
+                      color: #fff;
+                    "
+                    placeholder="Escribe o selecciona una opción..."
+                    oninput="setAsunto(this.value)"
+                    required
+                  />
+
+                  <!-- Botón desplegable nativo de Bootstrap -->
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="
+                      background-color: rgba(30, 34, 45, 0.95);
+                      color: #fff;
+                      border-color: rgba(255, 255, 255, 0.15);
+                    "
+                  >
+                    Opciones
+                  </button>
+
+                  <!-- Menú de opciones -->
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow"
+                    style="
+                      background-color: rgba(20, 22, 28, 0.98);
+                      border: 1px solid rgba(255, 255, 255, 0.1);
+                    "
+                  >
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Bot de Discord');
+                          return false;
+                        "
+                        >Bot de Discord</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Desarrollo Web / E-Commerce');
+                          return false;
+                        "
+                        >Desarrollo Web / E-Commerce</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Backend & APIs / Bases de Datos');
+                          return false;
+                        "
+                        >Backend & APIs / Bases de Datos</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Servidor Minecraft / Redes');
+                          return false;
+                        "
+                        >Servidor Minecraft / Redes</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Propuesta Laboral / Colaboración');
+                          return false;
+                        "
+                        >Propuesta Laboral / Colaboración</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item py-2"
+                        href="#"
+                        onclick="
+                          setAsunto('Consulta General');
+                          return false;
+                        "
+                        >Consulta General</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label small text-white-50 mb-1">
+                  <i class="fa-solid fa-comment-dots me-1 text-success"></i> Tu
+                  Mensaje
+                </label>
+                <textarea
+                  name="message"
+                  id="contact-message"
+                  class="form-control glass-input"
+                  rows="4"
+                  placeholder="Escribe aquí los detalles de tu consulta o idea..."
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                id="contact-submit-btn"
+                class="btn btn-primary w-100 rounded-pill py-2 fw-semibold d-flex align-items-center justify-content-center gap-2"
+                style="
+                  background: linear-gradient(135deg, #ef4444, #b91c1c);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                "
+              >
+                <i class="fa-solid fa-paper-plane"></i>
+                <span id="contact-btn-text">Enviar Mensaje</span>
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- Window: Settings -->
+        <div
+          id="window-settings"
+          class="os-window draggable"
+          style="
+            display: none;
+            top: 14%;
+            left: 25%;
+            width: 580px;
+            max-width: 95vw;
+            height: 540px;
+            max-height: 88vh;
+          "
+        >
+          <div
+            class="window-header d-flex justify-content-between align-items-center px-3 py-2"
+          >
+            <div class="window-controls d-flex gap-2">
+              <div
+                class="control-btn close-btn"
+                onclick="closeWindow('settings')"
+                title="Cerrar"
+              ></div>
+              <div
+                class="control-btn min-btn"
+                onclick="minimizeWindow('settings')"
+                title="Minimizar"
+              ></div>
+              <div
+                class="control-btn max-btn"
+                onclick="toggleMaximize('settings')"
+                title="Maximizar"
+              ></div>
+            </div>
+            <div class="window-title fw-bold">
+              <i class="fa-solid fa-gear me-2 text-secondary"></i>Configuración
+            </div>
+            <div style="width: 50px"></div>
+          </div>
+          <div class="window-body p-4 text-white">
+            <div
+              class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom border-white-10"
+            >
+              <div>
+                <h4 class="fw-bold mb-1 text-white">Personalización</h4>
+                <p class="text-white-50 small mb-0">
+                  Personaliza la apariencia y el fondo de escritorio.
+                </p>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label
+                class="form-label d-block mb-3 fw-semibold small text-white-50"
+              >
+                <i class="fa-solid fa-image me-1 text-primary"></i> FONDO DE
+                PANTALLA
+              </label>
+              <div class="row g-3">
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb active"
+                    onclick="changeWallpaper('img/fondos/1.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/1.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Dark Velvet</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="
+                      changeWallpaper('img/fondos/2.jpg?q=80&w=300&quot;', this)
+                    "
+                    style="
+                      background-image: url(&quot;img/fondos/2.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Cyberpunk</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/3.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/3.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Code Matrix</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/4.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/4.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Nature Valley</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/5.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/5.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Velvet Flow</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/6.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/6.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Neon Grid</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/7.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/7.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Windows 11</span
+                  >
+                </div>
+                <div class="col-4">
+                  <div
+                    class="wallpaper-thumb"
+                    onclick="changeWallpaper('img/fondos/8.jpg', this)"
+                    style="
+                      background-image: url(&quot;img/fondos/8.jpg?q=80&w=300&quot;);
+                    "
+                  ></div>
+                  <span
+                    class="d-block small text-white-50 mt-1 text-center text-truncate"
+                    >Ubuntu 26</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- System Info Panel -->
+            <div class="p-3 glass-panel rounded-3">
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <span class="small fw-bold text-white"
+                  ><i class="fa-solid fa-circle-info me-2 text-info"></i>HUBPAC
+                  WebOS</span
+                >
+              </div>
+              <div class="row g-2 text-white-50 small">
+                <div class="col-6">
+                  Entorno: <span class="text-white">Web</span>
+                </div>
+                <div class="col-6">
+                  Desarrollado por: <span class="text-white">Pablo</span>
+                </div>
+                <div class="col-6">
+                  Estado:
+                  <span class="text-success"
+                    ><span class="status-dot d-inline-block me-1"></span>
+                    Activo</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dock / Taskbar (macOS Style) -->
+      <div
+        class="dock-container fixed-bottom pb-3 d-flex justify-content-center"
+      >
+        <div class="dock glass-panel d-flex gap-3 px-4 py-2 rounded-4">
+          <div
+            id="dock-projects"
+            class="dock-item"
+            onclick="openWindow('projects')"
+            data-tooltip="Proyectos"
+          >
+            <i class="fa-solid fa-rocket text-primary"></i>
+          </div>
+          <div
+            id="dock-languages"
+            class="dock-item"
+            onclick="openWindow('languages')"
+            data-tooltip="Lenguajes & Stack"
+          >
+            <i class="fa-solid fa-code text-warning"></i>
+          </div>
+          <div
+            id="dock-services"
+            class="dock-item"
+            onclick="openWindow('services')"
+            data-tooltip="Servicios"
+          >
+            <i class="fa-solid fa-briefcase text-success"></i>
+          </div>
+          <div
+            id="dock-about"
+            class="dock-item"
+            onclick="openWindow('about')"
+            data-tooltip="Sobre Mí"
+          >
+            <i class="fa-solid fa-user text-info"></i>
+          </div>
+          <div
+            id="dock-contact"
+            class="dock-item"
+            onclick="openWindow('contact')"
+            data-tooltip="Contacto"
+          >
+            <i class="fa-solid fa-envelope text-danger"></i>
+          </div>
+          <div
+            class="dock-separator bg-white opacity-25"
+            style="width: 1px"
+          ></div>
+          <div
+            id="dock-settings"
+            class="dock-item"
+            onclick="openWindow('settings')"
+            data-tooltip="Configuración"
+          >
+            <i class="fa-solid fa-gear text-secondary"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
